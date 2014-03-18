@@ -4,11 +4,24 @@ import Data.Monoid
 
 data Nat = Zero
          | Succ Nat
-    deriving (Show, Read, Eq)
+    deriving (Show, Read, Eq, Ord)
 
 instance Monoid Nat where
     mempty = Zero
     mappend = plus
+
+instance Enum Nat where
+    succ = successor
+    pred = predecessor
+    -- I'm Sure there's a nicer way for this.
+    toEnum i = foldl (\x _ -> successor x) Zero [1..i]
+    fromEnum Zero = 0
+    fromEnum (Succ Zero) = 1
+    fromEnum (Succ n) = fromEnum n + 1
+
+-- So now you can do
+-- fromEnum $ succ . succ . succ . succ $ Zero
+-- -> 4
 
 isZero :: Nat -> Bool
 isZero Zero = True
