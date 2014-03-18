@@ -1,9 +1,14 @@
 module Peano where
 
+import Data.Monoid
+
 data Nat = Zero
          | Succ Nat
     deriving (Show, Read, Eq)
 
+instance Monoid Nat where
+    mempty = Zero
+    mappend = plus
 
 isZero :: Nat -> Bool
 isZero Zero = True
