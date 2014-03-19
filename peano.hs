@@ -2,6 +2,10 @@ module Peano where
 
 import Data.Monoid
 
+class Monoid a => Semiring a where
+    sone    :: a
+    stimes  :: a -> a -> a
+
 data Nat = Zero
          | Succ Nat
     deriving (Show, Read, Eq, Ord)
@@ -9,6 +13,10 @@ data Nat = Zero
 instance Monoid Nat where
     mempty = Zero
     mappend = plus
+
+instance Semiring Nat where
+    sone = Succ Zero
+    stimes n m = mconcat $ replicate (toInt n) m
 
 instance Enum Nat where
     succ = successor
@@ -44,3 +52,7 @@ minus Zero Zero = Zero
 minus Zero (Succ _) = undefined
 minus n@(Succ _) Zero = n
 minus (Succ n) (Succ o) = n `minus` o
+
+toInt :: Nat -> Int
+toInt Zero = 0
+toInt (Succ n) = 1 + toInt n
