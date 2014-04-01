@@ -56,3 +56,5 @@ minus (Succ n) (Succ o) = n `minus` o
 toInt :: Nat -> Int
 toInt Zero = 0
 toInt (Succ n) = 1 + toInt n
+
+-- Test definitions
