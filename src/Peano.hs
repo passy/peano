@@ -16,7 +16,7 @@ instance Monoid Nat where
 
 instance Semiring Nat where
     sone = Succ Zero
-    stimes n m = mconcat $ replicate (toInt n) m
+    stimes n m = mconcat $ replicate (fromEnum n) m
 
 instance Enum Nat where
     succ = successor
@@ -52,9 +52,5 @@ minus Zero Zero = Zero
 minus Zero (Succ _) = undefined
 minus n@(Succ _) Zero = n
 minus (Succ n) (Succ o) = n `minus` o
-
-toInt :: Nat -> Int
-toInt Zero = 0
-toInt (Succ n) = 1 + toInt n
 
 -- Test definitions
