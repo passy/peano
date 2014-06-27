@@ -21,8 +21,7 @@ instance Semiring Nat where
 instance Enum Nat where
     succ = successor
     pred = predecessor
-    -- I'm Sure there's a nicer way for this.
-    toEnum i = foldl (\x _ -> successor x) Zero [1..i]
+    toEnum i = iterate successor Zero !! i
     fromEnum Zero = 0
     fromEnum (Succ Zero) = 1
     fromEnum (Succ n) = fromEnum n + 1
