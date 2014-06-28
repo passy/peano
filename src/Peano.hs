@@ -5,8 +5,8 @@ import Prelude
 import Data.Monoid
 
 class Monoid a => Semiring a where
-    sone    :: a
-    stimes  :: a -> a -> a
+    sone :: a
+    stimes :: a -> a -> a
 
 data Nat = Zero
          | Succ Nat
