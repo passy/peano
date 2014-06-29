@@ -1,5 +1,7 @@
+{-# Language NoImplicitPrelude #-}
 module Peano where
 
+import Prelude
 import Data.Monoid
 
 class Monoid a => Semiring a where
