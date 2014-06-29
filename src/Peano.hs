@@ -23,7 +23,7 @@ instance Semiring Nat where
 instance Enum Nat where
     succ = successor
     pred = predecessor
-    toEnum i = iterate successor Zero !! i
+    toEnum = (iterate successor Zero !!)
     fromEnum Zero = 0
     fromEnum (Succ Zero) = 1
     fromEnum (Succ n) = fromEnum n + 1
