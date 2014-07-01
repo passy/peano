@@ -41,7 +41,6 @@ predecessor Zero = undefined
 predecessor (Succ n) = n
 
 successor :: Nat -> Nat
-{- successor n = Succ n -}
 successor = Succ
 
 plus :: Nat -> Nat -> Nat
@@ -53,5 +52,3 @@ minus Zero Zero = Zero
 minus Zero (Succ _) = undefined
 minus n@(Succ _) Zero = n
 minus (Succ n) (Succ o) = n `minus` o
-
--- Test definitions
